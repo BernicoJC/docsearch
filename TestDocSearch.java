@@ -15,8 +15,9 @@ public class TestDocSearch {
 	public void testSearch() throws URISyntaxException, IOException {
     Handler h = new Handler("./technical/");
     URI rootPath = new URI("http://localhost/search?q=Resonance");
-    String expect = "Found 2 paths:\n./technical/biomed/ar615.txt\n./technical/plos/journal.pbio.0020150.txt";
+    String expect = "Found 2 paths:\n.\\technical\\biomed\\ar615.txt\n.\\technical\\plos\\journal.pbio.0020150.txt";
     assertEquals(expect, h.handleRequest(rootPath));
+    assertEquals("Found 0 paths:\n", h.handleRequest(new URI("http://localhost/search?q=thiskeyworddoesntexist")));
 	}
 }
 
